@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <h4 *ngIf="error" class="text-center">{{ error }}</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Completed
+          <p [ngStyle]="{display: todos ? 'block' : 'none'}">
+            <span *ngFor="let filterOption of filterOptions; let lastItem = last;">
+              <span
+                class="pointer"
+                [ngClass]="{active: filterOption === selectedFilter}"
+                (click)="onFilter(filterOption)">
+                {{ filterOption }}
+              </span>
+              <span class="active" *ngIf="!lastItem">/</span>
+            </span>
+          </p>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="!todos; else todosTableBody">
+        <td colspan="4" class="text-center">Loading...</td>
+      </tr>
+      <tr
+        #todosTableBody
+        *ngFor="let todo of todos">
+        <td>{{ todo.userId }}</td>
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.completed }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

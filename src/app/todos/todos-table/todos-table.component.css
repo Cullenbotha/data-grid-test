@@ -1,0 +1,19 @@
+thead th {
+  text-align: center;
+  font-size: 1.5em;
+  vertical-align: top;
+}
+
+thead p {
+  font-size: 0.6em;
+  display: block;
+  color: #787878;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.active {
+  color: white;
+}
